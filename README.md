@@ -66,4 +66,4 @@ curl http://127.0.0.1:3091/api/dashboard
 
 ## Αποθετήριο
 
-Το project δημιουργήθηκε ως ανεξάρτητο τοπικό Git repository. Δεν έχει δημιουργηθεί ή δημοσιευτεί remote repository στο GitHub. Το υπάρχον project WNBA δεν τροποποιήθηκε.
+Το project είναι ανεξάρτητο Git repository στο https://github.com/chkontog2026/EUROLEAGUE-SCORE-UPDATER. Το υπάρχον project WNBA δεν τροποποιήθηκε.
