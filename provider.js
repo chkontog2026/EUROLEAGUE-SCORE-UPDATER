@@ -50,8 +50,8 @@ function normalizeGame(raw) {
 function normalizeStandings(payload) {
   if (!Array.isArray(payload?.teams)) throw new Error('Μη αναγνωρίσιμη απάντηση βαθμολογίας.');
   return payload.teams.map((entry) => {
-    const wins = number(entry.wins ?? entry.won);
-    const losses = number(entry.losses ?? entry.lost);
+    const wins = number(entry.gamesWon ?? entry.wins ?? entry.won);
+    const losses = number(entry.gamesLost ?? entry.losses ?? entry.lost);
     const position = number(entry.position ?? entry.rank);
     if (wins === null || losses === null || position === null) throw new Error('Ελλιπή στοιχεία επίσημης βαθμολογίας.');
     return { ...team(entry), position, wins, losses,

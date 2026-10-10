@@ -3,7 +3,19 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { createApp } = require('../server');
-const { createProvider, normalizeGame, seasonFor } = require('../provider');
+const { createProvider, normalizeGame, normalizeStandings, seasonFor } = require('../provider');
+
+test('normalizes the official standings fields observed on the VPS', () => {
+  const rows = normalizeStandings({ teams: [{
+    position: 1, gamesPlayed: 2, gamesWon: 2, gamesLost: 0,
+    club: { code: 'PAN', name: 'Panathinaikos AKTOR Athens' },
+    winPercentage: '100%', pointsDifference: '+42', pointsFor: 193, pointsAgainst: 151,
+  }] });
+  assert.deepEqual(rows, [{
+    code: 'PAN', name: 'Panathinaikos AKTOR Athens', position: 1,
+    wins: 2, losses: 0, pointsFor: 193, pointsAgainst: 151,
+  }]);
+});
 
 const rawGame = (overrides = {}) => ({
   gameCode: 1, round: 2, date: '2026-10-09T18:00:00Z', played: false,
