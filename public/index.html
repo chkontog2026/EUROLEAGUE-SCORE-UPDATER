@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142a29">
+  <meta name="description" content="Πρόγραμμα, αποτελέσματα και βαθμολογία EuroLeague σε ένα μέρος.">
+  <title>EuroLeague Courtside — Σκορ & πρόγραμμα</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Courtside αρχική"><img src="/favicon.svg" width="35" height="35" alt=""><span>COURTSIDE<small>EUROLEAGUE EDITION</small></span></a>
+    <p class="nav-label">ΤΟ ΠΑΙΧΝΙΔΙ, ΕΔΩ.</p>
+    <nav aria-label="Κύρια πλοήγηση">
+      <button class="nav-button active" data-view="games" aria-current="page"><span aria-hidden="true">◉</span> Αγώνες <span class="nav-arrow" aria-hidden="true">↗</span></button>
+      <button class="nav-button" data-view="standings"><span aria-hidden="true">▤</span> Βαθμολογία</button>
+      <button class="nav-button" data-view="favorites"><span aria-hidden="true">☆</span> Οι ομάδες μου <span id="favorite-count" class="count">0</span></button>
+    </nav>
+    <div class="sidebar-bottom"><span class="tiny-ball" aria-hidden="true">◎</span><h3>Κάθε κατοχή μετράει.</h3><p>Όλη η EuroLeague.<br>Ένα σημείο αναφοράς.</p><a href="https://www.euroleaguebasketball.net/euroleague/" target="_blank" rel="noopener">Επίσημη EuroLeague ↗</a></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>ΜΠΑΣΚΕΤ <span class="slash">/</span> <strong>EUROLEAGUE</strong></span><div><span id="season" class="season">—</span><span class="timezone">Ώρες Ελλάδας</span></div></header>
+    <main id="main">
+      <div class="page-heading"><div><p class="eyebrow">THE EUROPEAN GAME</p><h1 id="page-title">Στο παρκέ.</h1><p id="page-subtitle">Το πρόγραμμα, οι στιγμές, το σκορ. Όλα εδώ.</p></div><button id="refresh" class="refresh">↻ <span>Ανανέωση</span></button></div>
+      <div id="feed-notice" class="notice" role="status" hidden></div>
+      <section id="spotlight" class="spotlight" aria-label="Αγώνας στο επίκεντρο" hidden></section>
+      <section class="dashboard-stats" aria-label="Σύνοψη σεζόν"><div><span>ΑΓΩΝΕΣ ΣΕΖΟΝ</span><strong id="stat-games">—</strong></div><div><span>LIVE ΤΩΡΑ</span><strong id="stat-live">—</strong></div><div><span>ΟΜΑΔΕΣ</span><strong id="stat-teams">—</strong></div><div><span>ΕΝΗΜΕΡΩΣΗ ΔΕΔΟΜΕΝΩΝ</span><strong id="stat-update" class="update-time">—</strong></div></section>
+      <section id="games-view">
+        <div class="section-heading"><div><span class="section-number">01 /</span><h2 id="games-title">Η αγωνιστική δράση</h2></div><span id="game-count" class="muted"></span></div>
+        <div class="toolbar">
+          <div class="tabs" role="group" aria-label="Κατηγορία αγώνων"><button class="tab selected" data-filter="upcoming" aria-pressed="true">Πρόγραμμα</button><button class="tab" data-filter="live" aria-pressed="false">Live <span id="live-count">0</span></button><button class="tab" data-filter="final" aria-pressed="false">Αποτελέσματα</button></div>
+          <div class="filters"><label><span class="sr-only">Αγωνιστική</span><select id="round-filter"><option value="">Όλες οι αγωνιστικές</option></select></label><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Αναζήτηση ομάδας</span><input id="search" type="search" placeholder="Αναζήτηση ομάδας…" autocomplete="off"></label></div>
+        </div>
+        <div id="games" class="games-grid" aria-live="polite"><p class="empty">Φόρτωση αγώνων…</p></div>
+      </section>
+      <section id="standings-view" hidden>
+        <div class="section-heading"><div><span class="section-number">02 /</span><h2>Η κούρσα της σεζόν</h2></div><span class="muted">Επίσημη κατάταξη</span></div>
+        <p id="standings-notice" class="notice" hidden></p>
+        <div class="table-wrap"><table><caption class="sr-only">Βαθμολογία EuroLeague</caption><thead><tr><th scope="col">ΘΕΣΗ</th><th scope="col">ΟΜΑΔΑ</th><th scope="col">ΑΓ.</th><th scope="col">Ν</th><th scope="col">Η</th><th scope="col">ΠΟΝΤΟΙ</th><th scope="col">ΔΙΑΦ.</th><th scope="col"><span class="sr-only">Αγαπημένη ομάδα</span>☆</th></tr></thead><tbody id="standings"></tbody></table></div>
+      </section>
+      <footer><span>COURTSIDE <span class="footer-dot">●</span> EUROLEAGUE</span><span>Ανεξάρτητη εφαρμογή · Πηγή: EuroLeague API · Ανανεώνεται κάθε 20″</span></footer>
+    </main>
+  </div>
+</body>
+</html>

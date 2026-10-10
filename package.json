@@ -1,0 +1,14 @@
+{
+  "name": "euroleague-score-updater",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EuroLeague scores, fixtures and standings dashboard",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node --use-env-proxy server.js",
+    "start:vps": "node server.js",
+    "dev": "node --use-env-proxy --watch server.js",
+    "demo": "node server.js --demo",
+    "test": "node --test"
+  }
+}
